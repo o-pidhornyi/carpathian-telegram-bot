@@ -1,0 +1,52 @@
+spring:
+  # Primary datasource configuration.  Adjust these values to match your
+  # local MySQL installation.  The allowPublicKeyRetrieval flag is
+  # included to support RSA key retrieval over an SSL connection.  The
+  # serverTimezone should remain UTC to avoid DST surprises when
+  # persisting timestamps.
+  datasource:
+    url: jdbc:mysql://localhost:3306/carpathian_bot_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+
+  # Configure Redis for caching hot queries and editorial lists.  If
+  # Redis is not installed locally, leave these defaults and caching
+  # will silently fall back to no‑op.
+  redis:
+    host: localhost
+    port: 6379
+
+  # Internationalization: define message bundles without locale suffix.
+  messages:
+    basename: messages
+
+  # Configure task scheduling using the Europe/Kyiv time zone.  This
+  # ensures scheduled posts align with local time for users in
+  # Ukraine.
+  main:
+    time-zone: Europe/Kyiv
+
+telegram:
+  bots:
+    carpathianBot:
+      # Provide your bot credentials via environment variables or
+      # override in an external config file.
+      username: ${BOT_USERNAME:your-bot-username}
+      token: ${BOT_TOKEN:your-bot-token}
+      path: ${BOT_PATH:/}
+      webhook:
+        enabled: false
+
+logging:
+  level:
+    # Enable SQL logging to aid debugging of queries.
+    org.hibernate.SQL: debug
