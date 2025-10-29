@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${pageTitle}">Admin</title>
+    <link th:href="@{/css/admin.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="topbar">
+    <div class="container">
+        <h1>Carpathian Admin</h1>
+        <nav>
+            <a th:href="@{/admin/dashboard}">Dashboard</a>
+            <a th:href="@{/admin/upload}">Upload</a>
+            <a th:href="@{/admin/collections}">Collections</a>
+            <a th:href="@{/admin/logout}">Logout</a>
+        </nav>
+    </div>
+</header>
+<main class="container" th:fragment="content">
+    <!-- page specific content will be inserted here -->
+</main>
+</body>
+</html>
