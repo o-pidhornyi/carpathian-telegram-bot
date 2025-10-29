@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Dashboard</title>
+    <link th:href="@{/css/admin.css}" rel="stylesheet" />
+</head>
+<body>
+<header class="topbar">
+    <div class="container">
+        <h1>Carpathian Admin</h1>
+        <nav>
+            <a th:href="@{/admin/dashboard}">Dashboard</a>
+            <a th:href="@{/admin/upload}">Upload</a>
+            <a th:href="@{/admin/collections}">Collections</a>
+            <a th:href="@{/admin/logout}">Logout</a>
+        </nav>
+    </div>
+</header>
+<main class="container">
+    <h2>Dashboard</h2>
+    <h3>All Houses</h3>
+    <table class="data-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Amenities</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="house : ${houses}">
+            <td th:text="${house.name}">House Name</td>
+            <td th:text="${house.region}">Region</td>
+            <td th:text="${house.city}">City</td>
+            <td th:text="${#lists.join(house.amenities, ', ')}">Amenities</td>
+        </tr>
+        </tbody>
+    </table>
+</main>
+</body>
+</html>
