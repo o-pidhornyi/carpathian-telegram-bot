@@ -1,22 +1,19 @@
 spring:
-  # Primary datasource configuration.  Adjust these values to match your
-  # local MySQL installation.  The allowPublicKeyRetrieval flag is
-  # included to support RSA key retrieval over an SSL connection.  The
-  # serverTimezone should remain UTC to avoid DST surprises when
-  # persisting timestamps.
   datasource:
-    url: jdbc:mysql://localhost:3306/carpathian_bot_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: root
-    password: password
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:carpathian}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
-        format_sql: true
-    open-in-view: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  thymeleaf:
+    cache: false
 
   # Configure Redis for caching hot queries and editorial lists.  If
   # Redis is not installed locally, leave these defaults and caching
