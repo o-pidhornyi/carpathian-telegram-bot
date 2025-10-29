@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Collections</title>
+    <link rel="stylesheet" th:href="@{/css/admin.css}">
+</head>
+<body>
+<nav class="navbar">
+    <a th:href="@{/admin/dashboard}">Dashboard</a>
+    <a th:href="@{/admin/upload}">Upload Media</a>
+    <a th:href="@{/admin/collections}">Collections</a>
+    <a th:href="@{/admin/logout}">Logout</a>
+</nav>
+<div class="container">
+    <h1>Editorial Collections</h1>
+    <div th:if="${collections == null or #lists.isEmpty(collections)}">
+        <p>No collections found.</p>
+    </div>
+    <div th:each="collection : ${collections}">
+        <section class="collection">
+            <h2 th:text="${collection.title}">Collection Title</h2>
+            <ul>
+                <li th:each="house : ${collection.houses}" th:text="${house.name}">House Name</li>
+            </ul>
+        </section>
+    </div>
+</div>
+</body>
+</html>
