@@ -16,7 +16,7 @@ body {
 #app {
   min-height: 100vh;
   position: relative;
-  background-image: url('images/carp.png');
+  background-image: url('miniapp_carp.png');
   background-size: cover;
   background-position: center;
   backdrop-filter: brightness(0.8);
